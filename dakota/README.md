@@ -1,6 +1,4 @@
-# Blue Team First 5 Minutes: Automation & Triage
-
-**Operator:** Dakota Fedor  
+**Author:** Dakota Fedor  
 **Target Systems:** SCP-SMTP-01 (Windows Server 2019), BLUE-WIN-01 through 04 (Windows 11)
 
 ## Overview
