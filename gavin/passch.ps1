@@ -10,5 +10,9 @@ $keyPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
 $keyBytes = [System.Text.Encoding]::UTF8.GetBytes($keyPlain.PadRight(32).Substring(0,32))
 
 foreach ($user in $encrypted.PSObject.Properties) {
-    Write-Output $user.Value
+    $securePassword = $user.Value | ConvertTo-SecureString -Key $keyBytes
+    Set-ADAccountPassword -Identity $user.Name `
+        -NewPassword $securePassword `
+        -Reset
+    Write-Host "Password changed for $($user.Name)"
 }
