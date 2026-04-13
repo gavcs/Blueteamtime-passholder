@@ -18,7 +18,7 @@ function Get-SaltedHash($plaintext) {
     return "$salt`$$hash"   # stored as salt$hash
 }
 
-$users = @("Rick Thompson", "Odongo Tejani", "Theodore Blackwood", "Daniel Asheworth", "Simon Glass", "USE THIS PASSWORD FOR ANY OTHER USER NOT LISTED IN THE PACKET")
+$users = @("Overseer", "Rick Thompson", "Odongo Tejani", "Theodore Blackwood", "Daniel Asheworth", "Simon Glass", "USE THIS PASSWORD FOR ANY OTHER USER NOT LISTED IN THE PACKET", "cyberrange")
 $output = @{}
 Write-Host "`nUser : Salted+Hashed Password" -ForegroundColor Cyan
 Write-Host "------------------------------" -ForegroundColor Cyan
@@ -39,4 +39,4 @@ foreach ($user in $users) {
     Write-Host "Plaintext: $user : $plainPassword"
 }
 
-[PSCustomObject]$output | ConvertTo-Json -Depth 3 | Out-File "gavin/passwords.json"
+[PSCustomObject]$output | ConvertTo-Json -Depth 3 | Out-File "passwords.json"
