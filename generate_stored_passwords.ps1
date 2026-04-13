@@ -1,4 +1,4 @@
-$key = Read-Host -AsSecureString "FoxtrotTeamKeyForBlueTeam26cday1"
+$key = Read-Host -AsSecureString "Enter the Private Key: "
 $keyPlain = [Runtime.InteropServices.Marshal]::PtrToStringAuto(
     [Runtime.InteropServices.Marshal]::SecureStringToBSTR($key)
 )
@@ -6,7 +6,7 @@ $keyBytes = [System.Text.Encoding]::UTF8.GetBytes($keyPlain.PadRight(32).Substri
 
 $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*'
 function getPass {
-    return -join ((1..10) | ForEach-Object { $chars[(Get-Random -Maximum $chars.Length)] })
+    return -join ((1..12) | ForEach-Object { $chars[(Get-Random -Maximum $chars.Length)] })
 }
 function Get-SaltedHash($plaintext) {
     $salt = -join ((1..16) | ForEach-Object { $chars[(Get-Random -Maximum $chars.Length)] })
